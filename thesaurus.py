@@ -1,7 +1,7 @@
 import json
 from difflib import get_close_matches
 
-# Test #5 for Github webhook funtionality on remotehost
+# Test #6 for Github webhook funtionality on remotehost
 # Import data from json format into a variable, as a dictionary
 data = json.load(open("data.json"))
 word = ((input("Enter the word you are loking for:")).lower())
