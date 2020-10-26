@@ -4,7 +4,6 @@ from difflib import get_close_matches
 # Import data from json format into a variable, as a dictionary
 data = json.load(open("data.json"))
 word = ((input("Enter the word you are loking for:")).lower())
-capital = word.title()
 
 # This function takes a word as input and compares it with the keys from the dictionary
 def search(word):
@@ -12,8 +11,11 @@ def search(word):
     if word in data.keys():
         return data[word]
     # If te word isn't found, it tries to find a match turning the first letter in a capital letter
-    elif capital in data.keys():
-        return data[capital]
+    elif word.title() in data.keys():
+        return data[word.title()]
+    # If te word isn't found, it tries to find a match turning all letters in a capital letter
+    elif word.upper() in data.keys():
+        return data[word.upper()]
     #  "get_close_matches" function/method looks for the "word" against the dictionary keys "data.keys"; if it finds smth (the lenght of the item is >0) it prints it out
     elif len(get_close_matches(word, data.keys())) > 0:
         print ("Did you mean %s instead? If 'yes' type 'y', else type 'n':" % get_close_matches(word, data.keys())[0])
